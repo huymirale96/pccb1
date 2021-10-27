@@ -58,7 +58,7 @@
             this.mtbNgay.Location = new System.Drawing.Point(83, 288);
             this.mtbNgay.Mask = "00/00/0000";
             this.mtbNgay.Name = "mtbNgay";
-            this.mtbNgay.Size = new System.Drawing.Size(63, 20);
+            this.mtbNgay.Size = new System.Drawing.Size(84, 20);
             this.mtbNgay.TabIndex = 7;
             this.mtbNgay.ValidatingType = typeof(System.DateTime);
             // 

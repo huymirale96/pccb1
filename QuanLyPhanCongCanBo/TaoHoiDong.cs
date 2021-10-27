@@ -63,7 +63,7 @@ namespace QuanLyPhanCongCanBo
 
         private void btnTaoMoi_Click(object sender, EventArgs e)
         {
-            if(String.Compare(txtTenHoiDong.Text,"") != 0)
+            if (String.Compare(txtTenHoiDong.Text, "") != 0)
             {
                 try
                 {
@@ -76,16 +76,16 @@ namespace QuanLyPhanCongCanBo
                             cmd.CommandText = "sp_themhoidong";
                             //  cmd.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells["iMaCanBo"].Value.ToString());
                             cmd.Parameters.AddWithValue("@tenHoiDong", txtTenHoiDong.Text);
-                            cmd.Parameters.AddWithValue("@tuNgay",DateTime.Parse(maskedTextBoxTuNgay.Text));
-                            cmd.Parameters.AddWithValue("@denNgay", DateTime.Parse(maskedTextBoxDenNgay.Text));
+                            cmd.Parameters.AddWithValue("@tuNgay", DateTime.ParseExact(maskedTextBoxTuNgay.Text, "dd/MM/yyyy", null));
+                            cmd.Parameters.AddWithValue("@denNgay", DateTime.ParseExact(maskedTextBoxDenNgay.Text, "dd/MM/yyyy", null));
                             cmd.Parameters.AddWithValue("@maChuTich", comboBoxChuTich.SelectedValue);
                             cmd.Parameters.AddWithValue("@maThuKy", comboBoxThuKy.SelectedValue);
                             cmd.Parameters.AddWithValue("@ngaytao", DateTime.Now);
-                             cmd.Parameters.AddWithValue("@maGiamSat", comboBoxGiamSat.SelectedValue);
+                            cmd.Parameters.AddWithValue("@maGiamSat", comboBoxGiamSat.SelectedValue);
                             if (radioButtonChamThi.Checked == true)
                             {
-                                cmd.Parameters.AddWithValue("@loaiHoiDong","0");
-                            
+                                cmd.Parameters.AddWithValue("@loaiHoiDong", "0");
+
                             }
                             else
                             {

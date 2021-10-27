@@ -23,7 +23,7 @@ namespace QuanLyPhanCongCanBo
         public String maHoiDong = "";
 
         private void DanhSachGiangVienCuaPhong_Load(object sender, EventArgs e)
-        {  
+        {
             load_Cbb();
             panelThanhToan.Visible = false;
             panelTimKiem.Visible = false;
@@ -48,7 +48,7 @@ namespace QuanLyPhanCongCanBo
                     comboBoxCanBo.DisplayMember = "stengiangvien";
                     comboBoxCanBo.ValueMember = "imacanbo";
 
-                   
+
                 }
             }
 
@@ -81,7 +81,7 @@ namespace QuanLyPhanCongCanBo
                     DataTable data = new DataTable();
                     dap.Fill(data);
                     cbbCa.DataSource = data;
-                    cbbCa.DisplayMember = "stencathi"; 
+                    cbbCa.DisplayMember = "stencathi";
                     cbbCa.ValueMember = "imacathi";
                 }
             }
@@ -101,12 +101,12 @@ namespace QuanLyPhanCongCanBo
                     dap.Fill(data);
                     dataGridView_.DataSource = data;
 
-                 //   Debug.WriteLine("Ma Hoi Dong: " + maHoiDong + " count: " + data.Rows.Count);
+                    //   Debug.WriteLine("Ma Hoi Dong: " + maHoiDong + " count: " + data.Rows.Count);
                 }
             }
 
             dataGridView_.Columns["iMaPhanCong"].Visible = false;
-          //  dataGridView1.Columns["iMaHoiDong"].Visible = false;
+            //  dataGridView1.Columns["iMaHoiDong"].Visible = false;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -124,7 +124,7 @@ namespace QuanLyPhanCongCanBo
                         cmd.Parameters.AddWithValue("@maCaThi", cbbCa.SelectedValue);
                         cmd.Parameters.AddWithValue("@maCanBo", comboBoxCanBo.SelectedValue);
                         cmd.Parameters.AddWithValue("@maHoiDong", maHoiDong);
-                        cmd.Parameters.AddWithValue("@ngay",DateTime.Parse(maskedTextBoxNgay.Text));
+                        cmd.Parameters.AddWithValue("@ngay", DateTime.ParseExact(maskedTextBoxNgay.Text, "dd/MM/yyyy", null));
                         cnn.Open();
                         int i_ = cmd.ExecuteNonQuery();
                         if (i_ > 0)
@@ -156,7 +156,7 @@ namespace QuanLyPhanCongCanBo
                         cmd.CommandText = "sp_thanhToanTienChoCanBo";
                         cmd.Parameters.AddWithValue("@tien", txtTien.Text);
                         cmd.Parameters.AddWithValue("@maPhanCong", dataGridView_.CurrentRow.Cells["iMaPhanCong"].Value.ToString());
-                       // cmd.Parameters.AddWithValue("@maCanBo", dataGridView_.CurrentRow.Cells["imacanbo"].Value.ToString());
+                        // cmd.Parameters.AddWithValue("@maCanBo", dataGridView_.CurrentRow.Cells["imacanbo"].Value.ToString());
                         cnn.Open();
                         int i_ = cmd.ExecuteNonQuery();
                         if (i_ > 0)
@@ -191,7 +191,7 @@ namespace QuanLyPhanCongCanBo
                     cmd.Parameters.AddWithValue("@maCa", cbbCa.SelectedValue);
                     cmd.Parameters.AddWithValue("@maCanBo", comboBoxCanBo.SelectedValue);
                     cmd.Parameters.AddWithValue("@maHoiDong", maHoiDong);
-                    cmd.Parameters.AddWithValue("@ngay", DateTime.Parse(maskedTextBoxNgay.Text));
+                    cmd.Parameters.AddWithValue("@ngay", DateTime.ParseExact(maskedTextBoxNgay.Text, "dd/MM/yyyy", null));
                     cnn.Open();
                     SqlDataAdapter dap = new SqlDataAdapter(cmd);
                     DataTable data = new DataTable();
@@ -216,7 +216,7 @@ namespace QuanLyPhanCongCanBo
                 if (MessageBox.Show("Bạn có Muốn Phân Công Cán Bộ :  " + dataGridView_.CurrentRow.Cells["Tên Cán Bộ/Giảng Viên"].Value.ToString() + " ?", "Thông Báo",
    MessageBoxButtons.YesNo, MessageBoxIcon.Question,
    MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
-                { 
+                {
                     using (SqlConnection cnn = new SqlConnection(constr))
                     {
                         using (SqlCommand cmd = cnn.CreateCommand())
@@ -224,7 +224,7 @@ namespace QuanLyPhanCongCanBo
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.CommandText = "sp_XoaPhanCongCanBo";
                             cmd.Parameters.AddWithValue("@maPhanCong", dataGridView_.CurrentRow.Cells["iMaPhanCong"].Value.ToString());
-                           // cmd.Parameters.AddWithValue("@maCanBo", dataGridView_.CurrentRow.Cells["imacanbo"].Value.ToString());
+                            // cmd.Parameters.AddWithValue("@maCanBo", dataGridView_.CurrentRow.Cells["imacanbo"].Value.ToString());
                             cnn.Open();
                             int i_ = cmd.ExecuteNonQuery();
                             if (i_ > 0)
@@ -272,32 +272,32 @@ namespace QuanLyPhanCongCanBo
             {
                 string filter = "select ROW_NUMBER() OVER (ORDER BY tblPhanCongCanBo.iMaPhanCong) AS  STT,tblPhanCongCanBo.iMaPhanCong,tblcanbo.sTenGiangVien as N'Tên Cán Bộ/Giảng Viên', tblPhanCongCanBo.dNgay  as N'Ngày' ,tblPhongHoc.sTenPhong  as N'Phòng' , tblCaThi.sTenCaThi  as N'Ca' ,iTienCong as N'Tiền Công' from tblPhongHoc, tblCaThi, tblCanBo, tblPhanCongCanBo where tblCanBo.iMaCanBo = tblPhanCongCanBo.iMaCanBo and tblPhanCongCanBo.iMaCa = tblCaThi.iMaCaThi and tblPhanCongCanBo.iMaPhongHoc = tblPhongHoc.iMaPhongHoc ";
 
-            if (txtTenCanBo_TimKiem.Text != string.Empty)
-            {
-                filter += string.Format(" AND stenGiangVien LIKE '%{0}%'", txtTenCanBo_TimKiem.Text);
-            }
-            if (maskedTextBoxNgayTimKiem.MaskCompleted)
-            {
-                filter += " AND dNgay = '" + DateTime.Parse(maskedTextBoxNgayTimKiem.Text).ToString("MM/dd/yyyy") + "'";
-            }
-          // Debug.WriteLine("mash : " + DateTime.Parse(maskedTextBoxNgayTimKiem.Text).ToString("MM/dd/yyyy")  );
-
-
-            using (SqlConnection cnn = new SqlConnection(constr))
-            {
-                using (SqlCommand cmd = cnn.CreateCommand())
+                if (txtTenCanBo_TimKiem.Text != string.Empty)
                 {
-                    cnn.Open();
-                    cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = filter;
-                    SqlDataAdapter dap = new SqlDataAdapter(cmd);
-                    DataTable data = new DataTable();
-                    dap.Fill(data);
-
-                    dataGridView_.DataSource = data;
+                    filter += string.Format(" AND stenGiangVien LIKE '%{0}%'", txtTenCanBo_TimKiem.Text);
                 }
-            }
-            dataGridView_.Columns["iMaPhanCong"].Visible = false;
+                if (maskedTextBoxNgayTimKiem.MaskCompleted)
+                {
+                    filter += " AND dNgay = '" + DateTime.ParseExact(maskedTextBoxNgayTimKiem.Text, "dd/MM/yyyy", null).ToString("MM/dd/yyyy") + "'";
+                }
+                // Debug.WriteLine("mash : " + DateTime.Parse(maskedTextBoxNgayTimKiem.Text).ToString("MM/dd/yyyy")  );
+
+
+                using (SqlConnection cnn = new SqlConnection(constr))
+                {
+                    using (SqlCommand cmd = cnn.CreateCommand())
+                    {
+                        cnn.Open();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = filter;
+                        SqlDataAdapter dap = new SqlDataAdapter(cmd);
+                        DataTable data = new DataTable();
+                        dap.Fill(data);
+
+                        dataGridView_.DataSource = data;
+                    }
+                }
+                dataGridView_.Columns["iMaPhanCong"].Visible = false;
             }
             catch (Exception ex)
             {

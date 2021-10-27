@@ -105,8 +105,8 @@ namespace QuanLyPhanCongCanBo
                             cmd.CommandText = "sp_suahoidong";
                              cmd.Parameters.AddWithValue("@id", dataGridView1.CurrentRow.Cells["iMaHoiDong"].Value.ToString());
                             cmd.Parameters.AddWithValue("@tenHoiDong", txtTen.Text);
-                            cmd.Parameters.AddWithValue("@tuNgay", DateTime.Parse(maskedTextBoxTuNgay.Text));
-                            cmd.Parameters.AddWithValue("@denNgay", DateTime.Parse(maskedTextBoxDenNgay.Text));
+                            cmd.Parameters.AddWithValue("@tuNgay", DateTime.ParseExact(maskedTextBoxTuNgay.Text, "dd/MM/yyyy", null));
+                            cmd.Parameters.AddWithValue("@denNgay", DateTime.ParseExact(maskedTextBoxDenNgay.Text, "dd/MM/yyyy", null));
                             cmd.Parameters.AddWithValue("@maChuTich", cbbChuTich.SelectedValue);
                             cmd.Parameters.AddWithValue("@maThuKy", cbbThuKy.SelectedValue);
                             

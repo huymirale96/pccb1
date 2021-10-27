@@ -69,7 +69,7 @@
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.Location = new System.Drawing.Point(-1, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(615, 266);
+            this.dataGridView1.Size = new System.Drawing.Size(615, 314);
             this.dataGridView1.TabIndex = 4;
             // 
             // BaoCaoTheoHoiDongg

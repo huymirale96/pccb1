@@ -38,8 +38,7 @@ namespace QuanLyPhanCongCanBo
                         cnn.Open();
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.CommandText = "sp_danhSachPhanCongCanBoTheoNgay";
-                        cmd.Parameters.AddWithValue("@ngay", DateTime.Parse(mtbNgay.Text));
-                        // cmd.Parameters.AddWithValue("@ngayKetThuc", DateTime.Parse(txtNgayKetThuc.Text));
+                        cmd.Parameters.AddWithValue("@ngay", DateTime.ParseExact(mtbNgay.Text, "dd/MM/yyyy", null));
                         SqlDataAdapter dap = new SqlDataAdapter(cmd);
                         DataTable data = new DataTable();
                         dap.Fill(data);
@@ -54,7 +53,7 @@ namespace QuanLyPhanCongCanBo
             }
             catch (Exception exx)
             {
-                Debug.WriteLine(exx.Message);
+                Debug.WriteLine(exx.Message + "  " + mtbNgay.Text);
             }
         }
     }
