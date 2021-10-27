@@ -53,14 +53,14 @@ namespace QuanLyPhanCongCanBo
 
         private void báoCáoPhânCôngCánBộTheoNgàyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BaoCaoPhanCongTheoNgay bc = new BaoCaoPhanCongTheoNgay();
+            BaoCaoPhanCongTheoNgay_ bc = new BaoCaoPhanCongTheoNgay_();
             bc.MdiParent = this;
             bc.Show();
         }
 
         private void báoCáoTheoHộiĐồngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BaoCaoTheoHoiDongg bc = new BaoCaoTheoHoiDongg();
+            BaoCaoTheoHoiDong_ bc = new BaoCaoTheoHoiDong_();
             bc.MdiParent = this;
             bc.Show();
         }

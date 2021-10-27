@@ -32,10 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -52,11 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaoCaoPhanCongTheoNgay.cs">
+    <Compile Include="BaoCaoPhanCongTheoNgay_.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaoCaoPhanCongTheoNgay.Designer.cs">
-      <DependentUpon>BaoCaoPhanCongTheoNgay.cs</DependentUpon>
+    <Compile Include="BaoCaoPhanCongTheoNgay_.Designer.cs">
+      <DependentUpon>BaoCaoPhanCongTheoNgay_.cs</DependentUpon>
     </Compile>
     <Compile Include="BaoCaoTheoHoiDongg.cs">
       <SubType>Form</SubType>
@@ -64,17 +60,11 @@
     <Compile Include="BaoCaoTheoHoiDongg.Designer.cs">
       <DependentUpon>BaoCaoTheoHoiDongg.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaoCaoTienCongTheoHoiDong1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BaoCaoTienCongTheoHoiDong.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="BaoCaoTheoHoiDong_.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BCphanCongTheoNgay.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BCphanCongTheoNgay.rpt</DependentUpon>
-      <SubType>Component</SubType>
+    <Compile Include="BaoCaoTheoHoiDong_.Designer.cs">
+      <DependentUpon>BaoCaoTheoHoiDong_.cs</DependentUpon>
     </Compile>
     <Compile Include="DanhSachPhanCong.cs">
       <SubType>Form</SubType>
@@ -114,19 +104,14 @@
     <Compile Include="TaoHoiDong.Designer.cs">
       <DependentUpon>TaoHoiDong.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BaoCaoPhanCongTheoNgay.resx">
-      <DependentUpon>BaoCaoPhanCongTheoNgay.cs</DependentUpon>
+    <EmbeddedResource Include="BaoCaoPhanCongTheoNgay_.resx">
+      <DependentUpon>BaoCaoPhanCongTheoNgay_.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BaoCaoTheoHoiDongg.resx">
       <DependentUpon>BaoCaoTheoHoiDongg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaoCaoTienCongTheoHoiDong.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>BaoCaoTienCongTheoHoiDong1.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="BCphanCongTheoNgay.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>BCphanCongTheoNgay.cs</LastGenOutput>
+    <EmbeddedResource Include="BaoCaoTheoHoiDong_.resx">
+      <DependentUpon>BaoCaoTheoHoiDong_.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DanhSachPhanCong.resx">
       <DependentUpon>DanhSachPhanCong.cs</DependentUpon>
